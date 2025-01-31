@@ -42,8 +42,16 @@ class HouseController extends Controller
             'description' => 'required',
         ]);
 
+        $data['user_id']= auth()->id();
+
         $newListing = House::create($data);
         
-        return redirect(route('home'));
+        return redirect(route('home'))->with('success', 'Listing created successfully!');
+    }
+
+    public function index()
+    {
+        $houses = House::all(); // Get all houses from the database
+        return view('index', compact('houses'));
     }
 }

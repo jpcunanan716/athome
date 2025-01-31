@@ -26,6 +26,7 @@ class House extends Model
         'description',
         'furnished',
         'price',
+        'user_id',
     ];
 
     public function houses()

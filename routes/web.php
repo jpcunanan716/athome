@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::get('/home', [HouseController::class, 'home'])->name('home');
 Route::get('/listing', [HouseController::class, 'listing'])->name('listing');
 Route::post('/home', [HouseController::class, 'save'])->name('save');
+Route::get('/home', [HouseController::class, 'index'])->name('home');
 
 //admin routes
 Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->middleware(['auth', 'admin']);
