@@ -4,16 +4,22 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\AdminController;
+use App\Livewire\HouseListings;
+use App\Livewire\CreateListing;
+use App\Livewire\MediaManager;
+use Livewire\Livewire;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/home', [HouseController::class, 'home'])->name('home');
-Route::get('/listing', [HouseController::class, 'listing'])->name('listing');
-Route::post('/home', [HouseController::class, 'save'])->name('save');
-Route::get('/home', [HouseController::class, 'index'])->name('home');
+    // Route::get('/home', [HouseController::class, 'index'])->name('home');
+
+Route::get('/home', HouseListings::class);
+Route::get('/new-listing', CreateListing::class);
+Route::get('/add-images', MediaManager::class);
 
 //admin routes
 Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->middleware(['auth', 'admin']);
